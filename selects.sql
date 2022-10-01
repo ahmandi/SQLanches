@@ -20,14 +20,20 @@ WHERE produtos_pedidos.produto_id = 6;
 
 -- 3)
 SELECT clientes.nome AS gostam_de_fritas
-FROM clientes
-WHERE clientes.nome = 'Paula' OR clientes.nome = 'Elise' OR clientes.nome = 'Marcelo';
+FROM produtos_pedidos
+JOIN produtos
+ON produtos_pedidos.produto_id = produtos.id 
+JOIN pedidos
+ON produtos_pedidos.pedido_id = pedidos.id 
+JOIN clientes
+ON clientes.id = pedidos.id
+WHERE produtos.nome = 'Fritas';
 
 -- 4)
 SELECT SUM(CAST(produtos.preço AS decimal(10,2)))
 FROM produtos_pedidos
 JOIN produtos
-ON produtos_pedidos.produto_id  = produtos.id 
+ON produtos_pedidos.produto_id  = produtos.id
 WHERE produtos_pedidos.pedido_id  = 5;
 
 -- 5)
