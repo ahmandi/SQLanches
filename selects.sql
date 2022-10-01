@@ -42,4 +42,4 @@ SELECT produtos.nome,
 FROM produtos_pedidos
 JOIN produtos
 ON produtos_pedidos.produto_id = produtos.id
-GROUP BY produtos.nome;
+	GROUP BY produtos.nome ORDER BY produtos.nome;
